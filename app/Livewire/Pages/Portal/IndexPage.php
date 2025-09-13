@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Portal;
 
+use App\Models\Project;
 use Livewire\Component;
 
 class IndexPage extends Component
@@ -10,4 +11,5 @@ class IndexPage extends Component
     {
         return view('livewire.pages.portal.index-page');
     }
+
 }

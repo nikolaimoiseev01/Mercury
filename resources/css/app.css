@@ -8,9 +8,24 @@
 }
 
 body {
-    @apply bg-main_bg;
+}
+
+a {
+    @apply cursor-pointer;
+}
+
+h1 {
+    @apply font-normal text-5xl w-fit text-[32px];
 }
 
 h2 {
-    @apply font-[Forum] font-normal text-5xl;
+    @apply font-medium text-2xl;
+}
+
+.content {
+    @apply w-full px-6 max-w-[1540px] mx-auto;
+}
+
+ul {
+    @apply list-disc text-xl pl-8 leading-loose;
 }

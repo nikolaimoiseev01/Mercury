@@ -12,13 +12,17 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Lato', ...defaultTheme.fontFamily.sans],
+                sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                main_bg: '#ECEBF3',
-                maroon: {
-                    500: '#ECEBF3'
-                }
+                bright: {
+                    300: '#F5F5F5',
+                    400: '#FFFFFF'
+                },
+                dark: {
+                    300: '#0D0D0D',
+                    400: '#000000'
+                },
             },
             screens: {
                 '2xl': {'max': '1535px'}, // => @media (max-width: 1535px) { ... }
