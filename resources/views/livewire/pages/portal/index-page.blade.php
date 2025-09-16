@@ -152,7 +152,7 @@
                     </div>
                     <img src="/fixed/office-bg.png" class="md:hidden" alt="">
                 </div>
-                <x-ui.link class="ml-auto" @click="$dispatch('open-modal', 'app-modal')" class="md:hidden">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
+                <x-ui.link @click="$dispatch('open-modal', 'app-modal')" class="ml-auto md:hidden">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
             </div>
 
         </section>

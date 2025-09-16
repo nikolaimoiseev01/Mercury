@@ -29,9 +29,9 @@
         <div class="flex gap-16 font-light md:hidden">
             @foreach($links as $link)
                 <a href="{{$link['link']}}" class="relative inline-block w-fit
-      after:content-[\'\'] after:absolute after:left-0 after:bottom-0 after:right-0
-      after:h-[1px] after:bg-current after:scale-x-0 after:origin-left
-      after:transition-transform after:duration-300 hover:after:scale-x-100">{{$link['text']}}</a>
+          after:content-[''] after:block after:absolute after:left-0 after:bottom-0
+          after:h-[1px] after:w-full after:bg-current after:scale-x-0 after:origin-left
+          after:transition-transform after:duration-300 hover:after:scale-x-100">{{$link['text']}}</a>
             @endforeach
         </div>
         <p class="md:hidden">8 495 666 66 66</p>

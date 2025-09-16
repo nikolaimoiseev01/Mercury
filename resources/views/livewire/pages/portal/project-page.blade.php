@@ -47,7 +47,7 @@
     <x-project-slider :project="$project"/>
 
     <section class="flex items-center mb-24 content">
-        <x-ui.link class="mx-auto w-full text-center" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
+        <x-ui.link class="ml-auto text-center" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
     </section>
 
 </main>

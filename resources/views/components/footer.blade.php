@@ -5,9 +5,28 @@
             <div class="flex !text-white text-lg mx-auto gap-20 flex-wrap md:gap-12">
                 <div class="flex flex-col gap-6">
                     <p class="mb-2">Навигация</p>
-                    <x-ui.link-simple>Услуги</x-ui.link-simple>
-                    <x-ui.link-simple>Проекты</x-ui.link-simple>
-                    <x-ui.link-simple>О нас</x-ui.link-simple>
+                    @php
+                        $links = [
+                            [
+                                'text' => 'Услуги',
+                                'link' => '/#services'
+                             ],
+                                                [
+                                'text' => 'Проекты',
+                                'link' => '/#projects'
+                             ],
+                                                [
+                                'text' => 'О нас',
+                                'link' => route('portal.about')
+                             ]
+                         ]
+                    @endphp
+                    @foreach($links as $link)
+                        <a href="{{$link['link']}}" class="relative inline-block w-fit
+          after:content-[''] after:block after:absolute after:left-0 after:bottom-0
+          after:h-[1px] after:w-full after:bg-current after:scale-x-0 after:origin-left
+          after:transition-transform after:duration-300 hover:after:scale-x-100">{{$link['text']}}</a>
+                    @endforeach
                 </div>
                 <div class="flex flex-col gap-6">
                     <p class="mb-2">Контакты</p>
