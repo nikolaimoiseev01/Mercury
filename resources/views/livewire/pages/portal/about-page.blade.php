@@ -13,7 +13,7 @@
                 <li>По результатам работы за неделю вы получаете фото отчет и план работ на следующую неделю </li>
                 <li>Собственное дизайн-бюро</li>
             </ul>
-            <x-Ui.link class="ml-auto md:mx-auto" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ</x-Ui.link>
+            <x-ui.link class="ml-auto md:mx-auto" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
         </div>
     </section>
 </main>
