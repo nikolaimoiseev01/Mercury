@@ -39,7 +39,7 @@ class TelegramNotification extends Notification
         return  TelegramMessage::create()
             ->to('-4810647595')
             ->content("Новая заявка на консультацию!")
-            ->button('Все контакты', ENV('APP_ENV') == 'local' ? '' : ENV('APP_URL') . '/admin/contacts');
+            ->button('Все заявки', 'https://merstroi.ru/admin/contacts');
     }
 
     /**
