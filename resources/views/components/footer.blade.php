@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <x-Ui.link @click="$dispatch('open-modal', 'app-modal')" class="ml-auto md:hidden">ОСТАВИТЬ ЗАЯВКУ</x-Ui.link>
+        <x-ui.link @click="$dispatch('open-modal', 'app-modal')" class="ml-auto md:hidden">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
     </div>
 
 
