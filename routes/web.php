@@ -8,7 +8,9 @@ use App\Livewire\Pages\Auth\LoginPage;
 use App\Livewire\Pages\Auth\RegisterPage;
 use App\Livewire\Pages\Auth\ResetPasswordPage;
 use App\Livewire\Pages\Auth\VerifyEmailPage;
+use App\Livewire\Pages\Portal\AboutPage;
 use App\Livewire\Pages\Portal\IndexPage;
+use App\Livewire\Pages\Portal\ProjectPage;
 use Illuminate\Support\Facades\Route;
 
 
@@ -50,6 +52,8 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/', IndexPage::class)->name('portal.index');
+Route::get('/about', AboutPage::class)->name('portal.about');
+Route::get('/project/{slug}', ProjectPage::class)->name('portal.project');
 
 Route::middleware('auth')->prefix('account')->group(function () {
     Route::get('settings', SettingsPage::class)->middleware(['auth', 'verified'])->name('account.settings');

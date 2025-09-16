@@ -5,17 +5,21 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
-body {
+html {
+    @apply text-[16px] md:text-[14px] sm:!text-[13px];
 }
 
 a {
-    @apply cursor-pointer;
+    @apply cursor-pointer tracking-wide;
 }
 
 h1 {
-    @apply font-normal text-5xl w-fit text-[32px];
+    @apply font-normal text-5xl w-fit text-[32px] md:text-[24px] md:w-min;
 }
 
 h2 {
@@ -28,4 +32,29 @@ h2 {
 
 ul {
     @apply list-disc text-xl pl-8 leading-loose;
+}
+
+input[type="radio"] {
+    @apply bg-transparent !rounded-full;
+}
+
+
+input, textarea {
+    &:focus {
+        box-shadow: none !important;
+    }
+
+    box-shadow: none !important;
+    @apply !bg-transparent !border !border-white !rounded !text-white focus:!shadow-none focus:!outline-none !shadow-none !ring-0 focus:!ring-0;
+}
+
+
+[type='checkbox']:focus,[type='radio']:focus {
+    outline:  none !important;
+    outline-offset: 0;
+    --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+    --tw-ring-offset-width: 0;
+    --tw-ring-offset-shadow: none !important;
+    --tw-ring-shadow: none !important;
+    box-shadow: none !important;
 }

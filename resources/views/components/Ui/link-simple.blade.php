@@ -1,5 +1,4 @@
-<a href="/"
-   wire:navigate
+<a wire:navigate
     {{ $attributes->merge(['class' =>
      'relative inline-block w-fit
       after:content-[\'\'] after:absolute after:left-0 after:bottom-0 after:right-0

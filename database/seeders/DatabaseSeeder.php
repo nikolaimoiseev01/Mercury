@@ -7,6 +7,9 @@ use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +18,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $file = new Filesystem;
+        $file->cleanDirectory(storage_path('app/public/media'));
+        $email = ENV('APP_ENV') == ('local') ? 'admin@mail.ru' : ENV('ADMIN_EMAIL');
+        $password = ENV('APP_ENV') == ('local') ? '12345678' : ENV('ADMIN_PASSWORD');
+        User::create([
+            'name' => 'admin',
+            'email' => $email,
+            'email_verified_at' => now(),
+            'password' => Hash::make($password),
+            'remember_token' => Str::random(10),
+        ]);
+
         $places = [
             'Рестораны',
             'Дом',
@@ -23,30 +38,31 @@ class DatabaseSeeder extends Seeder
         foreach ($places as $place) {
             for ($i = 0; $i < 10; $i++) {
                 $project = Project::create([
-                    'name' => 'Название проекта №01',
+                    'name' => '№01',
                     'type' => 'Аппартаменты',
+                    'slug' => Str::slug('Название проекта №01'),
                     'place' => $place,
-                    'works' => 'Дизайн-проект\nПодбор материалов\nМонтаж\nАвторский надзор',
-                    'style' => 'Лофт-дизайн с элементами ар-деко',
-                    'unique' => 'Авторские проекты мебели',
+                    'works' => 'Дизайн-проект<br>Подбор материалов<br>Монтаж<br>Авторский надзор',
+                    'style' => 'Лофт-дизайн<br>с элементами ар-деко',
+                    'unique' => 'Авторские проекты<br> мебели',
                     'area' => '378 м2',
-                    'subtitle' => 'Проект-лофт в стиле ар-деко: уникальный интерьер на ваш вкус',
-                    'desc' => 'Представляем вашему вниманию архитектурный проект в стиле лофт, который сочетает в себе элементы ар-деко и является идеальным решением для создания уникального и стильного интерьера.
+                    'subtitle' => 'Проект-лофт в стиле<br> ар-деко: уникальный<br> интерьер на ваш вкус',
+                    'desc' => 'Представляем вашему вниманию архитектурный проект в стиле лофт, который сочетает в себе элементы ар-деко и является идеальным решением для создания уникального и стильного интерьера.<br><br>
 
 
 Наш проект представляет собой двухэтажное здание с большими окнами, которые обеспечивают максимальное проникновение естественного света и создают атмосферу легкости и простора. На первом этаже расположены гостиная, кухня и столовая, а на втором — спальни и ванные комнаты.
-В интерьере мы использовали натуральные материалы, такие как дерево и камень, чтобы создать ощущение уюта и комфорта. Мебель была выбрана в стиле ар-деко, с использованием металлических элементов и ярких иветов, что придает проекту неповторимый стиль и оригинальность.
+В интерьере мы использовали натуральные материалы, такие как дерево и камень, чтобы создать ощущение уюта и комфорта. Мебель была выбрана в стиле ар-деко, с использованием металлических элементов и ярких иветов, что придает проекту неповторимый стиль и оригинальность.<br><br>
 
-Особое внимание мы уделили освещению, используя подвесные светильники и лампы с металлическими элементами, которые создают эффектную игру света и тени.
+Особое внимание мы уделили освещению, используя подвесные светильники и лампы с металлическими элементами, которые создают эффектную игру света и тени.<br><br>
 
 Также мы добавили элементы декора. Такие как картины и зеркала, которые дополняют интерьер и делают его более выразительным.
 Проект в стиле лофт — это идеальное решение для тех. кто хочет создать современный и стильный интерьер, который будет отражать индивидуальность и вкус своего владельца.',
                 ]);
                 $cover_number = $i % 4 + 1;
                 $project->addMediaFromUrl(ENV('APP_URL') . "/fixed/test/cover_{$cover_number}.jpg")->toMediaCollection('cover');
-                $project->addMediaFromUrl(ENV('APP_URL') . '/fixed/test/img_1.jpg')->toMediaCollection('img_1');
-                $project->addMediaFromUrl(ENV('APP_URL') . '/fixed/test/img_2.jpg')->toMediaCollection('img_2');
-                $project->addMediaFromUrl(ENV('APP_URL') . '/fixed/test/img_3.jpg')->toMediaCollection('img_3');
+                $project->addMediaFromUrl(ENV('APP_URL') . '/fixed/test/img_1.png')->toMediaCollection('img_1');
+                $project->addMediaFromUrl(ENV('APP_URL') . '/fixed/test/img_2.png')->toMediaCollection('img_2');
+                $project->addMediaFromUrl(ENV('APP_URL') . '/fixed/test/img_3.png')->toMediaCollection('img_3');
             }
         }
 
