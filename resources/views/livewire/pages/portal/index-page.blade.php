@@ -26,8 +26,8 @@
             <h1 class="bg-white px-8 py-2">недвижимости</h1>
         </div>
         <div class="absolute content bottom-20 flex text-dark-300 z-20">
-            <x-Ui.link class="ml-auto md:mx-auto" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ
-            </x-Ui.link>
+            <x-ui.link class="ml-auto md:mx-auto" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ
+            </x-ui.link>
         </div>
 
     </section>
@@ -131,7 +131,7 @@
                         @endforeach
                     </div>
                 </div>
-                <x-Ui.link class="ml-auto md:mx-auto" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ</x-Ui.link>
+                <x-ui.link class="ml-auto md:mx-auto" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
             </div>
         </section>
 
@@ -152,7 +152,7 @@
                     </div>
                     <img src="/fixed/office-bg.png" class="md:hidden" alt="">
                 </div>
-                <x-Ui.link class="ml-auto" @click="$dispatch('open-modal', 'app-modal')" class="md:hidden">ОСТАВИТЬ ЗАЯВКУ</x-Ui.link>
+                <x-ui.link class="ml-auto" @click="$dispatch('open-modal', 'app-modal')" class="md:hidden">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
             </div>
 
         </section>
