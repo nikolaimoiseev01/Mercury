@@ -17,6 +17,10 @@
                     <input wire:model="object_type" required value="Офис" type="radio" id="Офис" name="object_type">
                     <label for="Офис">Офис</label>
                 </div>
+                <div class="flex gap-2 items-center">
+                    <input wire:model="object_type" required value="Другое" type="radio" id="Другое" name="object_type">
+                    <label for="Другое">Другое</label>
+                </div>
             </div>
 
             <div class="flex flex-col gap-2">

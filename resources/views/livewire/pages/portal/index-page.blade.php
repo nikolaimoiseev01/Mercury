@@ -31,129 +31,120 @@
         </div>
 
     </section>
-    @php
-        $icons = [
-            '/fixed/icon-gazprom.png',
-            '/fixed/icon-km.jpg',
-            '/fixed/icon-afimol.jpg',
-            '/fixed/icon-sts.png',
-            '/fixed/icon-sodamoda.jpg',
-            '/fixed/icon-h.png',
-    ]
-    @endphp
+    <x-partner-marquee/>
 
-    <section class="flex gap-10 py-8 items-center justify-center md:flex-col content">
-        <p class="text-xl">Клиенты</p>
-        <div class="flex gap-10 flex-wrap items-center justify-center">
-            @foreach($icons as $icon)
-                <img src="{{$icon}}" class="h-10 w-auto" alt="">
-            @endforeach
+
+    <section class="bg-dark-400 py-28" id="services">
+        @php
+            $blocks = [
+                [
+                'title' => 'Дизайн',
+                'subtitle' => 'Строительство, отделочные работы и технадзор',
+                'text' => "<ul>
+                    <li>Организация всех работ по проекту</li>
+                    <li>Соблюдение графика работ и сроков</li>
+                    <li>Гарантия на строительные работы</li>
+                    <li>Фиксированная сметная стоимость</li>
+                    <li>Своя команда инженеров и строителей</li>
+                    </ul>"
+                ],
+                [
+                'title' => 'Ремонт',
+                'subtitle' => 'Строительство, отделочные работы и технадзор',
+                'text' => "<ul>
+                    <li>Организация всех работ по проекту</li>
+                    <li>Соблюдение графика работ и сроков</li>
+                    <li>Гарантия на строительные работы</li>
+                    <li>Фиксированная сметная стоимость</li>
+                    <li>Своя команда инженеров и строителей</li>
+                    </ul>"
+                ],
+                [
+                'title' => 'Генподряд',
+                'subtitle' => 'Строительство, отделочные работы и технадзор',
+                'text' => "<ul>
+                    <li>Организация всех работ по проекту</li>
+                    <li>Соблюдение графика работ и сроков</li>
+                    <li>Гарантия на строительные работы</li>
+                    <li>Фиксированная сметная стоимость</li>
+                    <li>Своя команда инженеров и строителей</li>
+                    </ul>"
+                ]
+            ];
+
+        @endphp
+        <div class="content flex flex-col">
+            <div
+                x-data="{ open: null }"
+                class="flex gap-28 mb-16 md:flex-col"
+            >
+                <h2 class="text-bright-300">Услуги</h2>
+                <div class="flex flex-col flex-1">
+                    @foreach($blocks as $key=>$block)
+                        <div class="w-full border-b border-white py-11 first:pt-0 last:border-none">
+                            <!-- Заголовок услуги -->
+                            <div
+                                class="flex text-bright-300 cursor-pointer items-center group"
+                                @click="open === {{ $key }} ? open = null : open = {{ $key }}"
+                            >
+                                <h2 class="text-4xl mr-52 md:mr-16">0{{$key+1}}</h2>
+                                <h2 class="text-4xl mr-16 after:content-[''] relative after:absolute after:w-full after:h-px after:bg-white after:bottom-0 after:left-0">{{$block['title']}}</h2>
+                                <div
+                                    x-transition.opacity
+                                    class="group-hover:rotate-90 transition-transform duration-300"
+                                    x-show="open === {{ $key }}"
+                                >
+                                    <x-bi-x-lg
+                                        class="w-8 h-auto text-white"
+                                    />
+                                </div>
+
+                            </div>
+
+                            <!-- Открывающийся блок -->
+                            <div
+                                x-show="open === {{ $key }}"
+                                x-collapse
+                                class="bg-black text-bright-300 px-10 py-6 md:px-0"
+                            >
+                                <h3 class="text-3xl mb-4">{{$block['subtitle'] ?? 'Подробнее'}}</h3>
+                                {!! $block['text'] !!}
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <x-ui.link class="ml-auto md:mx-auto" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ
+            </x-ui.link>
         </div>
     </section>
 
-        <section class="bg-dark-400 py-28" id="services">
-            @php
-                $blocks = [
-                    [
-                    'title' => 'Дизайн',
-                    'subtitle' => 'Строительство, отделочные работы и технадзор',
-                    'text' => "<ul>
-                        <li>Организация всех работ по проекту</li>
-                        <li>Соблюдение графика работ и сроков</li>
-                        <li>Гарантия на строительные работы</li>
-                        <li>Фиксированная сметная стоимость</li>
-                        <li>Своя команда инженеров и строителей</li>
-                        </ul>"
-                    ],
-                    [
-                    'title' => 'Ремонт',
-                    'subtitle' => 'Строительство, отделочные работы и технадзор',
-                    'text' => "<ul>
-                        <li>Организация всех работ по проекту</li>
-                        <li>Соблюдение графика работ и сроков</li>
-                        <li>Гарантия на строительные работы</li>
-                        <li>Фиксированная сметная стоимость</li>
-                        <li>Своя команда инженеров и строителей</li>
-                        </ul>"
-                    ],
-                    [
-                    'title' => 'Генподряд',
-                    'subtitle' => 'Строительство, отделочные работы и технадзор',
-                    'text' => "<ul>
-                        <li>Организация всех работ по проекту</li>
-                        <li>Соблюдение графика работ и сроков</li>
-                        <li>Гарантия на строительные работы</li>
-                        <li>Фиксированная сметная стоимость</li>
-                        <li>Своя команда инженеров и строителей</li>
-                        </ul>"
-                    ]
-                ];
+    <livewire:components.project-blocks/>
 
-            @endphp
-            <div class="content flex flex-col">
-                <div
-                    x-data="{ open: null }"
-                    class="flex gap-28 mb-16 md:flex-col"
-                >
-                    <h2 class="text-bright-300">Услуги</h2>
-                    <div class="flex flex-col flex-1">
-                        @foreach($blocks as $key=>$block)
-                            <div class="w-full border-b border-white py-11 first:pt-0 last:border-none">
-                                <!-- Заголовок услуги -->
-                                <div
-                                    class="flex text-bright-300 cursor-pointer items-center group"
-                                    @click="open === {{ $key }} ? open = null : open = {{ $key }}"
-                                >
-                                    <h2 class="text-4xl mr-52 md:mr-16">0{{$key+1}}</h2>
-                                    <h2 class="text-4xl mr-16 after:content-[''] relative after:absolute after:w-full after:h-px after:bg-white after:bottom-0 after:left-0">{{$block['title']}}</h2>
-                                    <div
-                                        x-transition.opacity
-                                        class="group-hover:rotate-90 transition-transform duration-300"
-                                        x-show="open === {{ $key }}"
-                                    >
-                                        <x-bi-x-lg
-                                            class="w-8 h-auto text-white"
-                                        />
-                                    </div>
-
-                                </div>
-
-                                <!-- Открывающийся блок -->
-                                <div
-                                    x-show="open === {{ $key }}"
-                                    x-collapse
-                                    class="bg-black text-bright-300 px-10 py-6 md:px-0"
-                                >
-                                    <h3 class="text-3xl mb-4">{{$block['subtitle'] ?? 'Подробнее'}}</h3>
-                                    {!! $block['text'] !!}
-                                </div>
+    <section class="bg-dark-200 py-28 md:py-12">
+        <div class="flex flex-col gap-10 content">
+            <div class="flex gap-5" x-data="{show: false}">
+                <div class="flex flex-col w-1/2 md:w-full">
+                    <div @click="show = !show" class="border-b border-white pb-12">
+                        <a
+                            class="text-white text-3xl after:content-[''] relative after:absolute after:w-full after:h-px after:bg-white after:bottom-0 after:left-0">Агентство</a>
+                        <div x-show="show" x-collapse class="text-white text-2xl">
+                            <div class="pt-8">
+                                Описание для агенства Описание для агенства Описание для агенства
                             </div>
-                        @endforeach
-                    </div>
-                </div>
-                <x-ui.link class="ml-auto md:mx-auto" @click="$dispatch('open-modal', 'app-modal')">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
-            </div>
-        </section>
-
-        <livewire:components.project-blocks/>
-
-        <section class="bg-dark-200 py-28 md:py-12">
-            <div class="flex flex-col gap-10 content">
-                <div class="flex gap-5">
-                    <div class="flex flex-col w-1/2 md:w-full">
-                        <div class="border-b border-white pb-12">
-                            <a href=""
-                               class="text-white text-3xl after:content-[''] relative after:absolute after:w-full after:h-px after:bg-white after:bottom-0 after:left-0">Агентство</a>
-                        </div>
-                        <div class="border-b border-white py-12">
-                            <a href="{{route('portal.about')}}" wire:navigate
-                               class="text-white text-3xl after:content-[''] relative after:absolute after:w-full after:h-px after:bg-white after:bottom-0 after:left-0">Почему мы</a>
                         </div>
                     </div>
-                    <img src="/fixed/office-bg.png" class="md:hidden" alt="">
+                    <div class="border-b border-white py-12">
+                        <a href="{{route('portal.about')}}" wire:navigate
+                           class="text-white text-3xl after:content-[''] relative after:absolute after:w-full after:h-px after:bg-white after:bottom-0 after:left-0">Почему
+                            мы</a>
+                    </div>
                 </div>
-                <x-ui.link @click="$dispatch('open-modal', 'app-modal')" class="ml-auto md:hidden">ОСТАВИТЬ ЗАЯВКУ</x-ui.link>
+                <img src="/fixed/office-bg.png" class="md:hidden" alt="">
             </div>
+            <x-ui.link @click="$dispatch('open-modal', 'app-modal')" class="ml-auto md:hidden">ОСТАВИТЬ ЗАЯВКУ
+            </x-ui.link>
+        </div>
 
-        </section>
+    </section>
 </main>
