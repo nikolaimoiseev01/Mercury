@@ -23,23 +23,22 @@
 </style>
 <section class="py-28 content md:py-12">
     <!-- Slider main container -->
-    <div class="swiper">
+    <div class="swiper   h-[90vh] max-h-[90vh]">
         <!-- Additional required wrapper -->
-        <div class="swiper-wrapper  h-[90vh] max-h-[90vh]">
+        <div class="swiper-wrapper">
             <!-- Slides -->
-            <img class="swiper-slide max-h-full" src="{{$project->getFirstMediaUrl('img_3')}}" alt="">
-            <img class="swiper-slide max-h-full" src="{{$project->getFirstMediaUrl('img_3')}}" alt="">
-            <img class="swiper-slide max-h-full" src="{{$project->getFirstMediaUrl('img_3')}}" alt="">
+            @foreach($project->getMedia('gallery') as $media)
+                <div class="swiper-slide ">
+                    <img class="max-h-full object-cover object-center h-full w-full" src="{{$media->getUrl()}}" alt="">
+                </div>
+
+            @endforeach
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
 
         <x-heroicon-o-chevron-left class="button-prev w-16 absolute top-1/2 left-0 -translate-y-1/2 transition hover:scale-110 z-20 cursor-pointer"/>
         <x-heroicon-o-chevron-right class="button-next w-16 absolute top-1/2 right-0 -translate-y-1/2 transition hover:scale-110 z-20 cursor-pointer"/>
-{{--        <!-- If we need navigation buttons -->--}}
-{{--        <div class="swiper-button-prev"></div>--}}
-{{--        <div class="swiper-button-next"></div>--}}
-
     </div>
     @push('page-js')
         <script type="module">

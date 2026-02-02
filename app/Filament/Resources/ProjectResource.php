@@ -37,7 +37,7 @@ class ProjectResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('slug')
                             ->label('URL')
-                            ->disabled()
+                            ->readOnly()
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('type')
@@ -81,7 +81,13 @@ class ProjectResource extends Resource
                             ->collection('img_2'),
                         SpatieMediaLibraryFileUpload::make('img_3')
                             ->label('Изображение 3')
-                            ->collection('img_3')
+                            ->collection('img_3'),
+                        SpatieMediaLibraryFileUpload::make('gallery')
+                            ->label('Галерея')
+                            ->multiple()
+                            ->columnSpanFull()
+                            ->panelLayout('grid')
+                            ->collection('gallery')
                     ])->columns(2)
                 ])->columnSpanFull()->columns(2)
 

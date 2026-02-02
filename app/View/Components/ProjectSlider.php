@@ -13,7 +13,7 @@ class ProjectSlider extends Component
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
